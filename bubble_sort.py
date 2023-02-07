@@ -4,7 +4,7 @@ import sys
 from copy import copy
 from typing import List
 
-logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
+logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
@@ -18,9 +18,9 @@ def _bubble_sort_recursion(numbers: List[int], idx: int, max_idx: int):
 
 def bubble_sort_recursion(numbers: List[int], max_idx: int):
     _bubble_sort_recursion(numbers, 0, max_idx)
-    logger.debug({"action": "bubble_sort_recursion", "numbers": numbers})
     if max_idx - 1 >= 1:
         return bubble_sort_recursion(numbers, max_idx - 1)
+    logger.info({"action": "bubble_sort_recursion", "numbers": numbers})
 
 
 def bubble_sort(numbers: List[int]):
@@ -28,14 +28,14 @@ def bubble_sort(numbers: List[int]):
         for idx in range(max_idx):
             if numbers[idx] > numbers[idx + 1]:
                 numbers[idx], numbers[idx + 1] = numbers[idx + 1], numbers[idx]
-    logger.debug({"action": "bubble_sort", "numbers": numbers})
+    logger.info({"action": "bubble_sort", "numbers": numbers})
 
 
 if __name__ == "__main__":
     numbers = [random.randint(0, 100) for _ in range(10)]
     len_numbers = len(numbers)
     logger.info({"numbers": numbers})
-    bubble_sort_recursion(copy(numbers), len_numbers - 1)
-
-    logger.info({"numbers": numbers})
-    bubble_sort(copy(numbers))
+    _numbers = copy(numbers)
+    bubble_sort_recursion(_numbers, len_numbers - 1)
+    _numbers = copy(numbers)
+    bubble_sort(_numbers)
