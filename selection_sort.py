@@ -35,7 +35,6 @@ def selection_sort_recursion(numbers: List[int], len_numbers: int, idx: int):
 
 def selection_sort(numbers: List[int]):
     len_numbers = len(numbers)
-    min_idx = 0
     for base_idx in range(len_numbers):
         min_idx = base_idx
         for idx in range(base_idx + 1, len_numbers):
