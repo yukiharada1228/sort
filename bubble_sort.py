@@ -1,4 +1,5 @@
 import logging
+import random
 import sys
 from copy import copy
 from typing import List
@@ -31,7 +32,7 @@ def bubble_sort(numbers: List[int]):
 
 
 if __name__ == "__main__":
-    numbers = [5, 3, 4, 2, 1]
+    numbers = [random.randint(0, 100) for _ in range(10)]
     len_numbers = len(numbers)
     logger.info({"numbers": numbers})
     bubble_sort_recursion(copy(numbers), len_numbers - 1)
