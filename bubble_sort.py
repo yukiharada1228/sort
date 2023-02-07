@@ -20,7 +20,8 @@ def bubble_sort_recursion(numbers: List[int], max_idx: int):
     _bubble_sort_recursion(numbers, 0, max_idx)
     if max_idx - 1 >= 1:
         return bubble_sort_recursion(numbers, max_idx - 1)
-    logger.info({"action": "bubble_sort_recursion", "numbers": numbers})
+    else:
+        logger.info({"action": "bubble_sort_recursion", "numbers": numbers})
 
 
 def bubble_sort(numbers: List[int]):
